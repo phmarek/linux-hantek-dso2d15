@@ -1,0 +1,15 @@
+
+# Debian:
+#   apt-get install gcc-9-arm-linux-gnueabi
+# You need a link 
+# 	arm-linux-gnueabi-gcc -> /usr/bin/arm-linux-gnueabi-gcc-9
+# in your ~/bin/ or in /usr/local/bin etc.
+
+
+# https://forum.openwrt.org/t/build-error-gcc-10-x-solved-pls-fix-on-repo/68942
+export CC=gcc-9
+make prepare
+make modules_prepare
+make M=drivers/usb/gadget/ modules
+
+find . -iname "*.ko" -ls
