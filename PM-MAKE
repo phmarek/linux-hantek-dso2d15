@@ -7,9 +7,9 @@
 
 
 # https://forum.openwrt.org/t/build-error-gcc-10-x-solved-pls-fix-on-repo/68942
-export CC=gcc-9
-make prepare
-make modules_prepare
-make M=drivers/usb/gadget/ modules
+#export CC=gcc-9
+make CROSS_COMPILE=arm-linux-gnueabi- ARCH=arm prepare "$@"
+make CROSS_COMPILE=arm-linux-gnueabi- ARCH=arm modules_prepare "$@"
+make CROSS_COMPILE=arm-linux-gnueabi- ARCH=arm M=drivers/usb/gadget/ modules "$@"
 
 find . -iname "*.ko" -ls
